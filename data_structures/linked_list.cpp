@@ -131,21 +131,25 @@ struct pointer {
   bool has_changed_list = false;
 };
 
-Node* get_intersection(Node* l1, ListNode* l2) {
+Node* get_intersection(Node* l1, Node* l2) {
   if (l1 == nullptr || l2 == nullptr) return nullptr;
   pointer a{l1}, b{l2};
   while (a.node && b.node) {
     if (a.node == b.node) return a.node;
-    if (!a.node->next && !a.has_changed_list) a = {l2, true};
-    else a.node = a.node->next;
-    if (!b.node->next && !b.has_changed_list) b = {l1, true};
-    else b.node = b.node->next;
+    if (!a.node->next && !a.has_changed_list)
+      a = {l2, true};
+    else
+      a.node = a.node->next;
+    if (!b.node->next && !b.has_changed_list)
+      b = {l1, true};
+    else
+      b.node = b.node->next;
   }
   return nullptr;
 }
 
 /*
-Merge two unsorted  linked list in efficient way
+Merge two unsorted linked list in efficient way
 */
 
 /*
@@ -154,15 +158,78 @@ ex. 1->2->3->4->5->6->7->8
 if N=3, output would be:
 6->7->8->1->2->3->4->5
 */
+void remove_and_append(Node** head_ref, int range) {
+  if (!head_ref || !(*head_ref)->next) return;
 
-/*
-Delete repeated elements from linked list in O(n) time without using extra
-space.
-*/
+  int size = 0;
+  Node *trav = *head_ref, *new_head = nullptr;
+
+  while (trav) {
+    ++size;
+    trav = trav->next;
+  }
+
+  int sub_list_inclusive = size - range,
+      new_trail_index = sub_list_inclusive - 1;
+
+  if (sub_list_inclusive <= 0 || sub_list_inclusive >= size) return;
+
+  trav = *head_ref;
+  int index = 0;
+  while (trav) {
+    if (index == new_trail_index) {
+      new_head = trav->next;
+      trav->next = nullptr;
+      trav = new_head;
+      new_head = trav;
+    }
+    if (!trav->next) break;
+    trav = trav->next;
+    ++index;
+  }
+  trav->next = *head_ref;
+  *head_ref = new_head;
+}
 
 /*
 How do you reverse a linked list?
 */
+void reverse(Node** head_ref) {
+  if (head_ref == nullptr || (*head_ref)->next == nullptr) return;
+  Node *prev = nullptr, *curr = *head_ref, *next = nullptr;
+  while (curr) {
+    next = curr->next;
+    curr->next = prev;
+    prev = curr;
+    curr = next;
+  }
+  (*head_ref) = prev;
+}
+
+/*
+Delete repeated elements from linked list in O(n) time.
+*/
+void delete_repeated(Node** head_ref) {
+  if (head_ref == nullptr || (*head_ref)->next == nullptr) return;
+  std::set<int> seen;
+  Node *prev = *head_ref, *aux = nullptr;
+  seen.insert(prev->val);
+  head_ref = &(*head_ref)->next;
+  while (*head_ref) {
+    bool is_value_unique = !seen.count((*head_ref)->val);
+    if (is_value_unique) {
+      seen.insert((*head_ref)->val);
+      prev->next = *head_ref;
+      prev = *head_ref;
+      head_ref = &(*head_ref)->next;
+    } else {
+      aux = (*head_ref)->next;
+      delete (*head_ref);
+      head_ref = &aux;
+      prev->next = nullptr;
+    }
+  }
+}
 
 int main() {
   Node* head_odd = nullptr;
@@ -211,4 +278,54 @@ int main() {
   std::cout << "5. Get intersection(val == 1 is a head of intersection): "
             << get_intersection(pre_intersection_a, pre_intersection_b)->val
             << "\n";
+
+  Node* remove_and_append_head = nullptr;
+  // 0 -> 1 -> 2 -> ... -> 4 -> nullptr
+  for (int i = 0; i < 5; ++i) push(&remove_and_append_head, i);
+  std::cout << "6. Remove and append (range=3):\n";
+  std::cout << " a) before: ";
+  print(remove_and_append_head);
+  std::cout << " b) after: ";
+  remove_and_append(&remove_and_append_head, 1);
+  print(remove_and_append_head);
+
+  std::cout << "7. Reverse list:\n"
+            << " a) before: ";
+  print(head_odd);
+  std::cout << " b) after: ";
+  reverse(&head_odd);
+  print(head_odd);
+
+  Node* repeated_values = nullptr;
+  push(&repeated_values, 1);
+  push(&repeated_values, 1);
+  push(&repeated_values, 1);
+  push(&repeated_values, 3);
+  push(&repeated_values, 3);
+  push(&repeated_values, 3);
+  push(&repeated_values, 3);
+  push(&repeated_values, 3);
+  push(&repeated_values, 4);
+  push(&repeated_values, 4);
+  push(&repeated_values, 5);
+  push(&repeated_values, 5);
+  push(&repeated_values, 5);
+  push(&repeated_values, 5);
+  push(&repeated_values, 5);
+  push(&repeated_values, 7);
+  push(&repeated_values, 7);
+  push(&repeated_values, 7);
+  push(&repeated_values, 7);
+  push(&repeated_values, 7);
+  push(&repeated_values, 7);
+  push(&repeated_values, 123);
+  push(&repeated_values, 0);
+  push(&repeated_values, 0);
+  push(&repeated_values, 0);
+  std::cout << "8. Remove repeated values:\n"
+            << " a) before: ";
+  print(repeated_values);
+  std::cout << " b) after: ";
+  delete_repeated(&repeated_values);
+  print(repeated_values);
 }
