@@ -4,7 +4,7 @@ This repository contains all of the sources I've been using to practice algorith
 
 # ROADMAP
 
-__REFERENCE__: I will be using (the roadmap of coding interview website)[https://www.codinginterview.com/interview-roadmap] as a main reference for structurizing my learning plan.
+__REFERENCE__: I will be using [roadmap from the coding interview website](https://www.codinginterview.com/interview-roadmap) as a main reference for structurizing my learning plan.
 
 __GOAL__: Finish the roadmap until 3 months.
 
