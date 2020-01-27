@@ -13,9 +13,9 @@ __GOAL__: Finish the roadmap until 3 months.
 I've selected C++ for algorithms & data structures. Its swiftness is the main reason, but the vast amount of utilities from STL is a huge advantage as well.
 
 ### Data Structures
-- [ ] Sorting
-- [ ] Searching
 - [x] BigO notation
+  - [x] Time complexity basics
+  - [x] Space complexity basics
 - [ ] Arrays
   - [ ] Remove Even Integers from Array
   - [ ] Merge Two Sorted Arrays
@@ -53,5 +53,17 @@ I've selected C++ for algorithms & data structures. Its swiftness is the main re
 - [ ] Heaps
   - [ ] Find k smallest elements in a list
   - [ ] Find k largest elements in an array
+
+### Algorithms 
+- [ ] Sorting
+  - [x] Bucket Sort
+- [x] Prefix Sum
+- [x] Bucket counting
+- [x] Binary search
+  - [x] Contains key
+  - [x] Index of first occurrence of a key
+  - [x] Index of last occurrence of a key
+  - [x] Index of least element greater than key
+  - [x] Index of greatest element less than key
     
   
