@@ -1,0 +1,108 @@
+# Algorithms & Data Structures practice
+
+This directory contains my solutions for the top [100 liked questions](https://leetcode.com/problemset/top-100-liked-questions/) on [LeetCode](https://leetcode.com/).
+
+### Questions
+
+
+
+- [x] https://leetcode.com/problems/two-sum
+- [x] https://leetcode.com/problems/add-two-numbers
+- [x] https://leetcode.com/problems/group-anagrams
+- [x] https://leetcode.com/problems/merge-two-sorted-lists
+- [x] https://leetcode.com/problems/intersection-of-two-linked-lists
+- [x] https://leetcode.com/problems/reverse-linked-list
+- [x] https://leetcode.com/problems/linked-list-cycle
+- [x] https://leetcode.com/problems/linked-list-cycle-ii
+- [x] https://leetcode.com/problems/palindrome-linked-list
+- [ ] https://leetcode.com/problems/longest-substring-without-repeating-characters
+- [ ] https://leetcode.com/problems/median-of-two-sorted-arrays
+- [ ] https://leetcode.com/problems/longest-palindromic-substring
+- [ ] https://leetcode.com/problems/regular-expression-matching
+- [ ] https://leetcode.com/problems/container-with-most-water
+- [ ] https://leetcode.com/problems/3sum
+- [ ] https://leetcode.com/problems/letter-combinations-of-a-phone-number
+- [ ] https://leetcode.com/problems/remove-nth-node-from-end-of-list
+- [ ] https://leetcode.com/problems/valid-parentheses
+- [ ] https://leetcode.com/problems/generate-parentheses
+- [ ] https://leetcode.com/problems/merge-k-sorted-lists
+- [ ] https://leetcode.com/problems/next-permutation
+- [ ] https://leetcode.com/problems/longest-valid-parentheses
+- [ ] https://leetcode.com/problems/search-in-rotated-sorted-array
+- [ ] https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array
+- [ ] https://leetcode.com/problems/combination-sum
+- [ ] https://leetcode.com/problems/first-missing-positive
+- [ ] https://leetcode.com/problems/trapping-rain-water
+- [ ] https://leetcode.com/problems/permutations
+- [ ] https://leetcode.com/problems/rotate-image
+- [ ] https://leetcode.com/problems/maximum-subarray
+- [ ] https://leetcode.com/problems/jump-game
+- [ ] https://leetcode.com/problems/merge-intervals
+- [ ] https://leetcode.com/problems/unique-paths
+- [ ] https://leetcode.com/problems/minimum-path-sum
+- [x] https://leetcode.com/problems/climbing-stairs
+- [ ] https://leetcode.com/problems/edit-distance
+- [ ] https://leetcode.com/problems/sort-colors
+- [ ] https://leetcode.com/problems/minimum-window-substring
+- [ ] https://leetcode.com/problems/subsets
+- [ ] https://leetcode.com/problems/word-search
+- [ ] https://leetcode.com/problems/largest-rectangle-in-histogram
+- [ ] https://leetcode.com/problems/maximal-rectangle
+- [ ] https://leetcode.com/problems/flatten-binary-tree-to-linked-list
+- [ ] https://leetcode.com/problems/binary-tree-inorder-traversal
+- [ ] https://leetcode.com/problems/unique-binary-search-trees
+- [ ] https://leetcode.com/problems/validate-binary-search-tree
+- [ ] https://leetcode.com/problems/symmetric-tree
+- [ ] https://leetcode.com/problems/binary-tree-level-order-traversal
+- [ ] https://leetcode.com/problems/maximum-depth-of-binary-tree
+- [ ] https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
+- [ ] https://leetcode.com/problems/implement-trie-prefix-tree
+- [ ] https://leetcode.com/problems/binary-tree-maximum-path-sum
+- [ ] https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree
+- [ ] https://leetcode.com/problems/serialize-and-deserialize-binary-tree
+- [ ] https://leetcode.com/problems/invert-binary-tree
+- [ ] https://leetcode.com/problems/diameter-of-binary-tree
+- [ ] https://leetcode.com/problems/merge-two-binary-trees
+- [ ] https://leetcode.com/problems/best-time-to-buy-and-sell-stock
+- [ ] https://leetcode.com/problems/longest-consecutive-sequence
+- [ ] https://leetcode.com/problems/single-number
+- [ ] https://leetcode.com/problems/copy-list-with-random-pointer
+- [ ] https://leetcode.com/problems/word-break
+- [ ] https://leetcode.com/problems/lru-cache
+- [ ] https://leetcode.com/problems/sort-list
+- [ ] https://leetcode.com/problems/maximum-product-subarray
+- [ ] https://leetcode.com/problems/min-stack
+- [ ] https://leetcode.com/problems/majority-element
+- [ ] https://leetcode.com/problems/house-robber
+- [ ] https://leetcode.com/problems/number-of-islands
+- [ ] https://leetcode.com/problems/course-schedule
+- [ ] https://leetcode.com/problems/kth-largest-element-in-an-array
+- [ ] https://leetcode.com/problems/maximal-square
+- [ ] https://leetcode.com/problems/product-of-array-except-self
+- [ ] https://leetcode.com/problems/sliding-window-maximum
+- [ ] https://leetcode.com/problems/search-a-2d-matrix-ii
+- [ ] https://leetcode.com/problems/meeting-rooms-ii
+- [ ] https://leetcode.com/problems/perfect-squares
+- [ ] https://leetcode.com/problems/move-zeroes
+- [ ] https://leetcode.com/problems/find-the-duplicate-number
+- [ ] https://leetcode.com/problems/find-median-from-data-stream
+- [ ] https://leetcode.com/problems/longest-increasing-subsequence
+- [ ] https://leetcode.com/problems/remove-invalid-parentheses
+- [ ] https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown
+- [ ] https://leetcode.com/problems/burst-balloons
+- [ ] https://leetcode.com/problems/coin-change
+- [ ] https://leetcode.com/problems/house-robber-iii
+- [ ] https://leetcode.com/problems/counting-bits
+- [ ] https://leetcode.com/problems/top-k-frequent-elements
+- [ ] https://leetcode.com/problems/decode-string
+- [ ] https://leetcode.com/problems/queue-reconstruction-by-height
+- [ ] https://leetcode.com/problems/partition-equal-subset-sum
+- [ ] https://leetcode.com/problems/path-sum-iii
+- [ ] https://leetcode.com/problems/find-all-anagrams-in-a-string
+- [ ] https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array
+- [ ] https://leetcode.com/problems/target-sum
+- [ ] https://leetcode.com/problems/subarray-sum-equals-k
+- [ ] https://leetcode.com/problems/shortest-unsorted-continuous-subarray
+- [ ] https://leetcode.com/problems/task-scheduler
+- [ ] https://leetcode.com/problems/palindromic-substrings
+- [ ] https://leetcode.com/problems/daily-temperatures
