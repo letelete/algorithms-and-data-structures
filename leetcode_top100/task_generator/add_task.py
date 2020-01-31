@@ -13,7 +13,6 @@ class Task:
         self.number = self.__format_number(number)
         self.name = self.__format_name(name)
         self.diff = self.__format_diff(diff)
-        self.readme_name = self.__format_name_for_readme()
 
     # template: 001_abc_[hard].cpp
     def get_filename(self):
@@ -64,7 +63,7 @@ class Scrapper:
         task_fullname_xpath = "//div[@data-cy='question-title']"
         driver = self.__get_driver()
         try:
-            wait = WebDriverWait(driver, 10)
+            wait = WebDriverWait(driver, 3)
             name = wait.until(
                 ec.visibility_of_element_located((By.XPATH, task_fullname_xpath))
             )
@@ -104,6 +103,7 @@ class Scrapper:
 
 class AddTask:
     def __init__(self, task_url):
+        self.__solutions_dirname = "solutions"
         self.task = None
         scrapper = Scrapper(task_url)
 
@@ -113,30 +113,37 @@ class AddTask:
 
     def into_readme(self):
         path = self.__readme_relative_filepath()
-        file = open(path, "w+")
+
+        file = open(path, "r+")
         content = file.readlines()
-        task_filename = "- [ ] {}".format(self.task.name)
+        file.seek(0)
+        file.truncate(0)
+
+        task_filename_beginning = "- [ ] {}".format(self.task.name)
+
         for line in content:
-            if line.startswith(task_filename):
+            if line.startswith(task_filename_beginning):
                 line = self.__insert_task_into_line(line)
-                break
-            file.write(line)
+            file.write(str(line))
+
         file.close()
 
     # template: - [ ] container-with-most-water [Description](https://leetcode.com/problems/container-with-most-water)
     # after insertion: - [x] container-with-most-water [Solution](filepath) | [Description](https://leetcode.com/problems/container-with-most-water)
     def __insert_task_into_line(self, line):
         check = "- [x]"
-        solution_path = "solutions/{}".format(self.task.get_filename())
+        solution_path = "{}/{}".format(
+            self.__solutions_dirname, self.task.get_filename()
+        )
         description_path = self.task.url
         name = self.task.name
-        new_line = "{} {} [Solution]({}), [Description]({})".format(
+        new_line = "{} {} [Solution]({}) | [Description]({})\n".format(
             check, name, solution_path, description_path
         )
         return new_line
 
     def into_solutions_as_file(self):
-        path = self.__readme_relative_filepath()
+        path = self.__task_relative_filepath()
         file = open(path, "w+")
         file.close()
 
@@ -147,7 +154,7 @@ class AddTask:
 
     def __task_relative_filepath(self):
         task_filename = self.task.get_filename()
-        all_tasks_filepath = "../solutions"
+        all_tasks_filepath = "../{}".format(self.__solutions_dirname)
         path = all_tasks_filepath + "/" + task_filename
         return path
 

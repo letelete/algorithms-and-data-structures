@@ -65,7 +65,7 @@ Format: `- (unsolved:[ ]/solved:[x]) [question-name] [Link to the solution file:
 - [ ] merge_two_binary_trees [Description](https://leetcode.com/problems/merge-two-binary-trees)
 - [ ] best_time_to_buy_and_sell_stock [Description](https://leetcode.com/problems/best-time-to-buy-and-sell-stock)
 - [ ] longest_consecutive_sequence [Description](https://leetcode.com/problems/longest-consecutive-sequence)
-- [ ] single_number [Description](https://leetcode.com/problems/single-number)
+- [x] single_number [Solution](solutions/136_single_number_[easy].cpp) | [Description](https://leetcode.com/problems/single-number)
 - [ ] copy_list_with_random_pointer [Description](https://leetcode.com/problems/copy-list-with-random-pointer)
 - [ ] word_break [Description](https://leetcode.com/problems/word-break)
 - [ ] lru_cache [Description](https://leetcode.com/problems/lru-cache)
