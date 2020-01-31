@@ -16,7 +16,7 @@ Format: `- (unsolved:[ ]/solved:[x]) [question-name] [Link to the solution file:
 - [x] linked-list-cycle-ii [Solution](solutions/142_linked-list-cycle-ii_[medium.cpp) | [Description](https://leetcode.com/problems/linked_list_cycle_ii)
 - [x] palindrome-linked-list [Solution](solutions/234_palindrome_linked_list_[easy].cpp) | [Description](https://leetcode.com/problems/palindrome-linked-list)
 - [x] climbing-stairs [Solution](solutions/070_climbing_stairs_[easy].cpp) | [Description](https://leetcode.com/problems/climbing-stairs)
-- [ ] longest-substring-without-repeating-characters [Description](https://leetcode.com/problems/longest-substring-without-repeating-characters)
+- [x] longest-substring-without-repeating-characters [Solution](solutions/003_longest_substring_without_repeating_characters_[medium].cpp) | [Description](https://leetcode.com/problems/longest-substring-without-repeating-characters)
 - [ ] median-of-two-sorted-arrays [Description](https://leetcode.com/problems/median-of-two-sorted-arrays)
 - [ ] longest-palindromic-substring [Description](https://leetcode.com/problems/longest-palindromic-substring)
 - [ ] regular-expression-matching [Description](https://leetcode.com/problems/regular-expression-matching)
