@@ -63,7 +63,7 @@ class Scrapper:
         task_fullname_xpath = "//div[@data-cy='question-title']"
         driver = self.__get_driver()
         try:
-            wait = WebDriverWait(driver, 3)
+            wait = WebDriverWait(driver, 10)
             name = wait.until(
                 ec.visibility_of_element_located((By.XPATH, task_fullname_xpath))
             )
@@ -111,7 +111,15 @@ class AddTask:
         if scrapper.success:
             self.task = scrapper.get_task()
 
+    # Inserts properly formatted task into readme and marks it as solved.
+    # The insertion index equals to the latest solved task index + 1.
+    # All solved tasks should move at the top of the file.
     def into_readme(self):
+        solved_task_readme_line = self.__beginning_of_task_readme_line(solved=True)
+        new_task_readme_line = self.__beginning_of_task_readme_line(
+            solved=False, name=self.task.name
+        )
+
         path = self.__readme_relative_filepath()
 
         file = open(path, "r+")
@@ -119,18 +127,40 @@ class AddTask:
         file.seek(0)
         file.truncate(0)
 
-        task_filename_beginning = "- [ ] {}".format(self.task.name)
+        last_solved_task_index = 0
+        readme_contains_task = False
 
-        for line in content:
-            if line.startswith(task_filename_beginning):
-                line = self.__insert_task_into_line(line)
-            file.write(str(line))
+        for index, line in enumerate(content):
+            if solved_task_readme_line in line:
+                last_solved_task_index = index
+                file.write(line)
+            elif last_solved_task_index == 0:
+                file.write(line)
+            if new_task_readme_line in line:
+                readme_contains_task = True
+                content.pop(index)
+                break
+
+        if not readme_contains_task:
+            print(
+                "Task '{}' not found in the readme file.".format(self.task.name),
+                "Appending as a new one.",
+            )
+
+        file.write(self.__get_task_readme_line())
+
+        for line in content[last_solved_task_index + 1 :]:
+            file.write(line)
 
         file.close()
 
+    def __beginning_of_task_readme_line(self, solved=True, name=""):
+        checkbox = "x" if solved else " "
+        return "- [{}] {}".format(checkbox, name)
+
     # template: - [ ] container-with-most-water [Description](https://leetcode.com/problems/container-with-most-water)
     # after insertion: - [x] container-with-most-water [Solution](filepath) | [Description](https://leetcode.com/problems/container-with-most-water)
-    def __insert_task_into_line(self, line):
+    def __get_task_readme_line(self):
         check = "- [x]"
         solution_path = "{}/{}".format(
             self.__solutions_dirname, self.task.get_filename()
