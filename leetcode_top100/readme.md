@@ -15,7 +15,7 @@ Format: `- (unsolved:[ ]/solved:[x]) [question-name] [Link to the solution file:
 - [x] palindrome_linked_list [Solution](solutions/234_palindrome_linked_list_[easy].cpp) | [Description](https://leetcode.com/problems/palindrome-linked-list)
 - [x] climbing_stairs [Solution](solutions/070_climbing_stairs_[easy].cpp) | [Description](https://leetcode.com/problems/climbing-stairs)
 - [x] longest_substring_without_repeating_characters [Solution](solutions/003_longest_substring_without_repeating_characters_[medium].cpp) | [Description](https://leetcode.com/problems/longest-substring-without-repeating-characters)
-- [x] missing_number [Description](https://leetcode.com/problems/missing-number)
+- [x] missing_number [Solution](solutions/268_missing_number_[easy].cpp) | [Description](https://leetcode.com/problems/missing-number)
 - [x] top_k_frequent_elements [Solution](solutions/347_top_k_frequent_elements_[medium].cpp) | [Description](https://leetcode.com/problems/top-k-frequent-elements)
 - [x] valid_parentheses [Solution](solutions/020_valid_parentheses_[easy].cpp) | [Description](https://leetcode.com/problems/valid-parentheses)
 - [x] longest_palindromic_substring [Solution](solutions/005_longest_palindromic_substring_[medium].cpp) | [Description](https://leetcode.com/problems/longest-palindromic-substring)
