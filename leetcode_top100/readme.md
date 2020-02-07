@@ -21,6 +21,7 @@ Format: `- (unsolved:[ ]/solved:[x]) [question-name] [Link to the solution file:
 - [x] longest_palindromic_substring [Solution](solutions/005_longest_palindromic_substring_[medium].cpp) | [Description](https://leetcode.com/problems/longest-palindromic-substring)
 - [x] rotate_image [Solution](solutions/048_rotate_image_[medium].cpp) | [Description](https://leetcode.com/problems/rotate-image)
 - [x] letter_case_permutation [Solution](solutions/784_letter_case_permutation_[easy].cpp) | [Description](https://leetcode.com/problems/letter-case-permutation)
+- [x] squares_of_a_sorted_array [Solution](solutions/977_squares_of_a_sorted_array_[easy].cpp) | [Description](https://leetcode.com/problems/squares-of-a-sorted-array)
 - [ ] binary_tree_level_order_traversal [Description](https://leetcode.com/problems/binary-tree-level-order-traversal)
 - [ ] median_of_two_sorted_arrays [Description](https://leetcode.com/problems/median-of-two-sorted-arrays)
 - [ ] regular_expression_matching [Description](https://leetcode.com/problems/regular-expression-matching)
