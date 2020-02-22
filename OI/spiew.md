@@ -6,9 +6,13 @@
 
 ---
 
-#### Score: 100/100
+#### Score 100/100
 
-#### Time Complexity: O(n)
+### Complexity
+
+#### Time: O(n)
+
+#### Space: O(n)
 
 ---
 

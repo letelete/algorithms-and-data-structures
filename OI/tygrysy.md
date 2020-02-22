@@ -1,11 +1,22 @@
-/**
- * Tygrysy
- * OIG stage III. Memory limit: 32 MB.
- * Score: 100/100
- *
- * https://szkopul.edu.pl/problemset/problem/qIU-rEjDKpMNvQWNfGOxYrO5/site/?key=statement
- */
+# [Tygrysy](https://szkopul.edu.pl/problemset/problem/qIU-rEjDKpMNvQWNfGOxYrO5/site/?key=statementt)
 
+#### OIG stage III
+
+#### Memory limit 32 MB
+
+---
+
+#### Score 100/100
+
+### Complexity
+
+#### Time: O(n)
+
+#### Space: O(k), where k equals to the amount of unique tiger sizes. k == n in worst case.
+
+---
+
+```C++
 #include <bits / stdc++.h>
 
 typedef std::pair<int, int> tiger;
@@ -44,3 +55,4 @@ int main() {
 
   return 0;
 }
+```
