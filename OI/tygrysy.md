@@ -1,4 +1,4 @@
-# [Tygrysy](https://szkopul.edu.pl/problemset/problem/qIU-rEjDKpMNvQWNfGOxYrO5/site/?key=statementt)
+# [Tygrysy](https://szkopul.edu.pl/problemset/problem/qIU-rEjDKpMNvQWNfGOxYrO5/site/?key=statement)
 
 #### OIG stage III
 
