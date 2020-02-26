@@ -18,28 +18,7 @@ void optimize_io() {
 template <typename T>
 using v = std::vector<T>;
 
-template <typename K, typename V>
-using umap = std::unordered_map<K, V>;
-
-template <class T>
-T min(T a, T b) {
-  return a > b ? b : a;
-}
-
-template <class T>
-T max(T a, T b) {
-  return a > b ? a : b;
-}
-
 typedef std::string str;
-
-template <class T>
-T pow(T a, unsigned b = 2) {
-  if (b == 0) return 1;
-  unsigned temp = pow(a, b / 2);
-  if (b % 2 == 0) return temp * temp;
-  return a * temp * temp;
-}
 }  // namespace cp
 
 using namespace cp;
@@ -73,10 +52,8 @@ struct date {
 };
 
 date translate_into_day_and_month(date query_date, char tribe_id) {
-  std::vector<int>& origin =
-      tribe_id == ARBUZAN_ID ? arbuzan_months : bananit_months;
-  std::vector<int>& target =
-      tribe_id == ARBUZAN_ID ? bananit_months : arbuzan_months;
+  v<int>& origin = tribe_id == ARBUZAN_ID ? arbuzan_months : bananit_months;
+  v<int>& target = tribe_id == ARBUZAN_ID ? bananit_months : arbuzan_months;
 
   int total_days = query_date.day;
   if (query_date.month >= 2) total_days += origin[query_date.month - 2];
