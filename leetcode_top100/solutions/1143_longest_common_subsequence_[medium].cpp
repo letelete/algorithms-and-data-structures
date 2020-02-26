@@ -19,7 +19,7 @@ class Solution {
   }
 };
 
-// Top down using recurstion (TLE on leetcode)
+// Top down using recursion (TLE on leetcode)
 class Solution {
  public:
   string pop_last(std::string& str) {
