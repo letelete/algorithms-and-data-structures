@@ -1,4 +1,4 @@
-# [Kalendarze](https://szkopul.edu.pl/problemset/problem/EMB5uNAIW1GVi_U23U-pqurR/site/?key=statement)
+# [Jutro](https://szkopul.edu.pl/problemset/problem/EMB5uNAIW1GVi_U23U-pqurR/site/?key=statement)
 
 #### AMPPZ
 
