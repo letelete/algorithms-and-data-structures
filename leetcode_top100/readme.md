@@ -24,6 +24,7 @@ Format: `- (unsolved:[ ]/solved:[x]) [question-name] [Link to the solution file:
 - [x] squares_of_a_sorted_array [Solution](solutions/977_squares_of_a_sorted_array_[easy].cpp) | [Description](https://leetcode.com/problems/squares-of-a-sorted-array)
 - [x] peak_index_in_a_mountain_array [Solution](solutions/852_peak_index_in_a_mountain_array_[easy].cpp) | [Description](https://leetcode.com/problems/peak-index-in-a-mountain-array)
 - [x] find_peak_element [Solution](solutions/162_find_peak_element_[medium].cpp) | [Description](https://leetcode.com/problems/find-peak-element)
+- [x] longest_common_subsequence [Solution](solutions/1143_longest_common_subsequence_[medium].cpp) | [Description](https://leetcode.com/problems/longest-common-subsequence)
 - [ ] binary_tree_level_order_traversal [Description](https://leetcode.com/problems/binary-tree-level-order-traversal)
 - [ ] median_of_two_sorted_arrays [Description](https://leetcode.com/problems/median-of-two-sorted-arrays)
 - [ ] regular_expression_matching [Description](https://leetcode.com/problems/regular-expression-matching)
