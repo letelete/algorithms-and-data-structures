@@ -1,3 +1,27 @@
+# [Jaskinia_diamentow](https://szkopul.edu.pl/c/archiwum-zadan-k0mpend1x/problemset/problem/y2gdhCAB0TaLwumvZIyKKFd3/site/?key=statement)
+
+#### G16
+
+#### Stage II, Day B
+
+#### Memory limit 64 MB
+
+---
+
+#### Score: Unknown - The task has been archived.
+
+### Complexity
+
+#### Time:
+
+- O(n^2) for 2d prefix sum vector
+- O(1) rect query
+
+#### Space: O(n^2)
+
+---
+
+```C++
 /**
  * Jaskinia diamentów
  *
@@ -7,7 +31,7 @@
  * https://szkopul.edu.pl/c/archiwum-zadan-k0mpend1x/problemset/problem/y2gdhCAB0TaLwumvZIyKKFd3/site/?key=statement
  *
  * Score: Unknown - The task has been archived.
- * Time complexity: 
+ * Time complexity:
  * Prefix sum 2d vector initialization: O(n^2)
  * Single rect query O(1)
  */
@@ -104,3 +128,4 @@ int main() {
 
   return 0;
 }
+```

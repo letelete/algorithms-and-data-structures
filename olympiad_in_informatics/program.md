@@ -1,12 +1,22 @@
-/**
- * Program
- * - OIG stage I. Memory limit: 32 MB.
- *
- * Score: 100/100
- * Time complexity: O(n)
- *
- * https://szkopul.edu.pl/problemset/problem/jvPBZm53yfvDkYKuuxbQvjNe/site/?key=statement
- */
+# [Program](https://szkopul.edu.pl/problemset/problem/jvPBZm53yfvDkYKuuxbQvjNe/site/?key=statement)
+
+#### OIG Stage I
+
+#### Memory limit 32 MB
+
+---
+
+#### Score 100/100
+
+### Complexity
+
+#### Time: O(n)
+
+#### Space: O(n)
+
+---
+
+```C++
 #include <bits/stdc++.h>
 
 #define MIN_N 1
@@ -24,16 +34,6 @@ using v = std::vector<T>;
 
 template <typename K, typename V>
 using umap = std::unordered_map<K, V>;
-
-template <class T>
-T min(T a, T b) {
-  return a > b ? b : a;
-}
-
-template <class T>
-T max(T a, T b) {
-  return a > b ? a : b;
-}
 
 typedef std::string str;
 
@@ -59,7 +59,7 @@ int solve() {
   std::stack<char> seen;
 
   for (const char& c : in) {
-    max_depth = max(depth_counter, max_depth);
+    max_depth = std::max(depth_counter, max_depth);
     bool top_bracket_counter = !seen.empty() && c == counter[seen.top()];
     bool next_nestedness = counter[c] != '\0';
     if (seen.empty() || next_nestedness) {
@@ -86,3 +86,4 @@ int main() {
 
   return 0;
 }
+```

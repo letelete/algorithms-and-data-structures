@@ -1,16 +1,26 @@
+# [Aquapark](https://szkopul.edu.pl/problemset/problem/J4wIQqR4YCpTUr-d-in1DKnt/site/?key=statement)
+
+#### OIG Stage III
+
+#### Memory limit 128 MB
+
+---
+
+#### Score 56/100
+
+### Complexity
+
+#### Time: O(n \* k)
+
+- n - amount of guards.
+- k - maximal horizontal range of pools that nth guard takes care of.
+
+#### Space: O(n^2)
+
+---
+
+```C++
 /**
- * Aquapark
- * - OIG Stage III. Memory limit: 64 MB.
- *
- *
- https://szkopul.edu.pl/problemset/problem/J4wIQqR4YCpTUr-d-in1DKnt/site/?key=statement
- *
- * Score: 56 / 100
- * Time complexity: O(n * k),
- * where:
- * n - amount of guards.
- * k - maximal horizontal range of pools that nth guard takes care of.
- *
   1	OK	0.00s / 0.10s	8 / 8
   2	OK	0.00s / 0.10s	8 / 8
   3	OK	0.00s / 0.10s	8 / 8
@@ -125,3 +135,4 @@ int main() {
 
   return 0;
 }
+```
