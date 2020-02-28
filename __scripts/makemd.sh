@@ -36,4 +36,16 @@ else
 $code
 \`\`\`
 """ >"${file_title}.md"
+
+    echo "Do you want to remove an original code file? (y/n)"
+    while :; do
+        read -n 1 -t 15 selection
+        printf "\n"
+        case $selection in
+        y*) rm $file ;;
+
+        \
+            *) exit 0 ;;
+        esac
+    done
 fi
