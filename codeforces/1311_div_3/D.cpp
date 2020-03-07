@@ -24,7 +24,6 @@ void solve() {
   int optimal_steps = INT_MAX;
   answer ans;
   for (int _A = 1; _A <= 2 * a; ++_A) {
-    // All multiplications of _A
     // So we are only interested in finding a C now
     for (int _B = _A; _B <= 2 * b; _B += _A) {
       // verify both edges and get a value closer to one of them
