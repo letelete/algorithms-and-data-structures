@@ -1,0 +1,25 @@
+8
+X 2
+A B
+A 1
+X
+B 1
+X
+C 3
+W E Z
+W 2
+C E
+E 2
+W C
+Z 1
+C
+O 0
+
+# Input:
+# - First line: N - Amount of nodes in the graph
+# - Then N lines each consists of input 2 lines 
+#   - First line: P - Particular node id, M - Connections length
+#   - Second line: a1 a2 ... aM-1 aM - connected nodes ids with length of M
+
+# Run with:
+# g++ connected_components_unordered.cpp -o ccu; ./ccu < connected_components_unordered.input

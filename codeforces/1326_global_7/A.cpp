@@ -20,7 +20,7 @@ int main() {
   while (t--) {
     int n;
     std::cin >> n;
-    std::cout << (n <= 1 ? "-1" : (str(n - 1, '2') + '7')) << "\n";
+    std::cout << (n <= 1 ? "-1" : (str(n - 1, '5') + '4')) << "\n";
   }
 
   return 0;
