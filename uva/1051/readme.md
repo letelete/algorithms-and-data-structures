@@ -4,14 +4,14 @@
 
 ### O(sqrt(N))
 
-Count divisors of given N.
+Count divisors of given `N`.
 For even amount of divisors the switch will stay to be turned off, otherwise on.
 
-We can count such amount in O(sqrt(N)) time realising that for every P, where N % P == 0, we can also get K, where K = N / P. If P != K, we increase an amount by two, else by one. We won't exceed number of sqrt(N) in interation, because all possible dividors in this area are already discovered.
+We can count such amount in `O(sqrt(N))` time realising that for every `P`, where `N % P == 0`, we can also get `K`, where `K = N / P`. If `P != K`, we increase an amount by two, else by one. We won't exceed number of `sqrt(N)` in interation, because all possible dividors in this area are already discovered.
 
 ### O(1)
 
-We can reduce the time to O(1) by noticing that the amount of divisors is odd IFF the given N is a perfect square and so, can be represented as: int(sqrt(N))^2.
+We can reduce the time to `O(1)` by noticing that the amount of divisors is odd IFF the given `N` is a perfect square and so, can be represented as: `int(sqrt(N))^2`.
 
 # Task
 
