@@ -15,79 +15,104 @@ typedef std::pair<int, int> pint;
 #define ROCK '#'
 #define PATH '.'
 
-int n, m;
+#define COLORS_YELLOW "\e[93m"
+#define COLORS_NORMAL "\e[39m"
+#define COLORS_RED "\e[31m"
+#define COLORS_GREEN "\e[32m"
 
-// north south east west
-v<pint> drs{{-1, 0}, {+1, 0}, {0, +1}, {0, -1}};
+int n, m;
 
 v<v<char>> dungeon;
 v<v<bool>> visited;
 std::queue<pint> nodes;
+std::map<pint, pint> relations;
 
 pint start{-1, -1}, end{-1, -1};
 
-void print_title(str msg) { std::cout << "-- " << msg << " --\n"; }
+// north south east west
+const v<pint> directions{{-1, 0}, {+1, 0}, {0, +1}, {0, -1}};
 
-std::map<pint, pint> bfs() {
+int move_count = 0;
+int nodes_left_in_layer = 1;
+int nodes_in_next_layer = 0;
+
+void queue_neighbours(pint node) {
+  for (auto direction : directions) {
+    int x = node.first + direction.first;
+    int y = node.second + direction.second;
+    pint next{x, y};
+
+    if (next.first < 0 || next.second < 0) continue;
+    if (next.first >= n || next.second >= m) continue;
+
+    if (visited[next.first][next.second]) continue;
+    if (dungeon[next.first][next.second] == ROCK) continue;
+
+    visited[next.first][next.second] = true;
+    nodes.push(next);
+    if (relations.find(next) == relations.end()) relations[next] = node;
+    ++nodes_in_next_layer;
+  }
+}
+
+int bfs() {
   nodes.push(start);
-  std::map<pint, pint> path;
+  visited[start.first][start.second] = true;
 
   while (!nodes.empty()) {
     pint node = nodes.front();
-    visited[node.first][node.second] = true;
-    if (node == end) return path;
     nodes.pop();
-
-    if (dungeon[node.first][node.second] == ROCK) continue;
-
-    for (int i = 0; i < drs.size(); ++i) {
-      pint next{node.first + drs[i].first, node.second + drs[i].second};
-      if (next.first < 0 || next.second < 0) continue;
-      if (next.first >= n || next.second >= m) continue;
-
-      if (!visited[next.first][next.second]) {
-        nodes.push(next);
-        if (path.find(next) == path.end()) path[next] = node;
-      }
+    if (node == end) return move_count;
+    queue_neighbours(node);
+    --nodes_left_in_layer;
+    if (!nodes_left_in_layer) {
+      nodes_left_in_layer = nodes_in_next_layer;
+      nodes_in_next_layer = 0;
+      ++move_count;
     }
   }
 
-  return {};
+  return -1;
 }
 
-struct path {
-  int steps = 0;
-  v<v<bool>> grid;
-};
-
-path generate_path(std::map<pint, pint> moves) {
-  path p{0, v<v<bool>>(n, v<bool>(m, false))};
+v<v<bool>> generate_path() {
+  v<v<bool>> grid(n, v<bool>(m, false));
   pint cur = end;
-  p.grid[cur.first][cur.second] = true;
+  grid[cur.first][cur.second] = true;
   while (cur != start) {
-    cur = moves[cur];
-    p.grid[cur.first][cur.second] = true;
-    p.steps++;
+    cur = relations[cur];
+    grid[cur.first][cur.second] = true;
   }
-  return p;
+  return grid;
 }
 
 void solve() {
-  auto moves = bfs();
-  if (moves.empty()) {
-    std::cout << "You can't exit the dungeon :(\n";
-  } else {
-    auto exit_path = generate_path(moves);
-    std::cout << "You can exit the dungeon with " << exit_path.steps
-              << " steps :)\n\n";
-    print_title("The Shortest Path");
-    for (int i = 0; i < n; ++i) {
-      for (int j = 0; j < m; ++j) {
-        std::cout << (exit_path.grid[i][j] ? "\e[33m" : "\e[39m") << "["
-                  << dungeon[i][j] << "]";
-      }
-      std::cout << "\n";
+  int steps = bfs();
+
+  if (steps == -1) {
+    std::cout << COLORS_RED 
+              << "You can't exit the dungeon :(" 
+              << COLORS_NORMAL
+              << "\n";
+    return;
+  }
+
+  auto exit_path = generate_path();
+  std::cout << COLORS_GREEN 
+            << "You can exit the dungeon with " 
+            << steps
+            << " steps :)" 
+            << COLORS_NORMAL 
+            << "\n\n--The Shortest Path --\n";
+
+  for (int i = 0; i < n; ++i) {
+    for (int j = 0; j < m; ++j) {
+      bool is_ceil_a_path = exit_path[i][j];
+      char ceil = dungeon[i][j];
+      std::cout << (is_ceil_a_path ? COLORS_YELLOW : COLORS_NORMAL);
+      std::cout << "[" << ceil << "]";
     }
+    std::cout << "\n";
   }
 }
 
@@ -99,7 +124,6 @@ int main() {
   dungeon = v<v<char>>(n, v<char>(m));
   visited = v<v<bool>>(n, v<bool>(m, false));
 
-  print_title("The Dungeon");
   for (int j = 0; j < n; ++j) {
     str raw;
     std::cin >> raw;
@@ -107,14 +131,9 @@ int main() {
       dungeon[j][i] = raw[i];
       if (dungeon[j][i] == START) start = pint{j, i};
       if (dungeon[j][i] == EXIT) end = pint{j, i};
-      std::cout << "[" << raw[i] << "]";
     }
-    std::cout << "\n";
   }
-  assert(start.first != -1 && start.second != -1);
-  assert(end.first != -1 && end.second != -1);
 
-  std::cout << "\n";
   solve();
 
   return 0;
