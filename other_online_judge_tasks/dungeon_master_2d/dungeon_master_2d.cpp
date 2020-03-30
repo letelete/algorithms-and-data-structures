@@ -62,8 +62,8 @@ int bfs() {
   while (!nodes.empty()) {
     pint node = nodes.front();
     nodes.pop();
-    if (node == end) return move_count;
     queue_neighbours(node);
+    if (node == end) return move_count;
     --nodes_left_in_layer;
     if (!nodes_left_in_layer) {
       nodes_left_in_layer = nodes_in_next_layer;
@@ -90,20 +90,14 @@ void solve() {
   int steps = bfs();
 
   if (steps == -1) {
-    std::cout << COLORS_RED 
-              << "You can't exit the dungeon :(" 
-              << COLORS_NORMAL
+    std::cout << COLORS_RED << "You can't exit the dungeon :(" << COLORS_NORMAL
               << "\n";
     return;
   }
 
   auto exit_path = generate_path();
-  std::cout << COLORS_GREEN 
-            << "You can exit the dungeon with " 
-            << steps
-            << " steps :)" 
-            << COLORS_NORMAL 
-            << "\n\n--The Shortest Path --\n";
+  std::cout << COLORS_GREEN << "You can exit the dungeon with " << steps
+            << " steps :)" << COLORS_NORMAL << "\n\n--The Shortest Path --\n";
 
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < m; ++j) {
