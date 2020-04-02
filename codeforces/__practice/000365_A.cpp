@@ -14,7 +14,22 @@ typedef std::pair<int, int> pint;
 int main() {
     std::cin.tie(0);
     std::ios::sync_with_stdio(0);
-    
+
+    int n, k, count = 0;
+    std::cin >> n >> k;
+    while (n--) {
+        str s;
+        std::cin >> s;
+        int greater = 0;
+        std::unordered_set<int> seen;
+        for (const char& c : s) {
+            int digit = c - '0';
+            if (digit <= k) seen.insert(digit);
+        }
+        count += (seen.size() == k + 1);
+    }
+
+    std::cout << count << "\n";
+
     return 0;
 }
-        

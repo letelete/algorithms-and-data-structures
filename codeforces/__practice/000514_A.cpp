@@ -14,7 +14,16 @@ typedef std::pair<int, int> pint;
 int main() {
     std::cin.tie(0);
     std::ios::sync_with_stdio(0);
-    
+
+    str in;
+    std::cin >> in;
+    for (int i = 0; i < in.length(); ++i) {
+        int num = in[i] - '0';
+        int n = std::min(num, 9 - num);
+        if (i == 0 && !n) n = num;
+        std::cout << n;
+    }
+
+    std::cout << "\n";
     return 0;
 }
-        

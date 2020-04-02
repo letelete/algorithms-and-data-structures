@@ -14,7 +14,13 @@ typedef std::pair<int, int> pint;
 int main() {
     std::cin.tie(0);
     std::ios::sync_with_stdio(0);
-    
+
+    v<i64> aux(10, 0);
+    i64 n, m, count = 0;
+    std::cin >> n >> m;
+    for (int i = 1; i <= n; i++) ++aux[i % 5];
+    for (int i = 1; i <= m; i++) count += aux[(5 - i % 5) % 5];
+    std::cout << count << "\n";
+
     return 0;
 }
-        
