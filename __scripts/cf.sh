@@ -1,41 +1,34 @@
 # Creates an environment for participating in the codeforces contests
 
-if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then
-    echo [!] All arguments must be satisfied
-    echo [*] Usage: ./cf [destination] [round-number] [div-id]
-    echo [*] Example: ./cf /d/___programming/cp 1441 2
-else
-    problem_set=(A B C D E F)
-    extension="cpp"
-    round_name="$2_div_$3"
+WARNING="\e[31m[!]"
+HINT="\e[33m[*]"
+BOLD="\e[1m"
 
-    cd $1
-    mkdir $round_name
-    cd $round_name
+error_message="""\n
+    $WARNING All arguments must be satisfied\n
+    $HINT Usage: ./cf [round-number] [div-id]\n
+    $HINT Example: ./cf 1441 2\n"""
 
-    for problem in ${problem_set[*]}; do
-        echo """
-#include <bits/stdc++.h>
-typedef long long int i64;
-template <typename T>
-using v = std::vector<T>;
-template <typename K, typename V>
-using umap = std::unordered_map<K, V>;
-typedef std::string str;
-typedef std::vector<int> vint;
-typedef std::vector<std::string> vstr;
-typedef std::vector<char> vchar;
-typedef std::pair<int, int> pint;
+([ -z "$1" ] || [ -z "$2" ]) && echo -e $error_message && exit
 
-int main() {
-    std::cin.tie(0);
-    std::ios::sync_with_stdio(0);
-    
-    return 0;
-}
-        """ >"$problem.$extension"
-    done
+script_dir=$(dirname "$0")
+code_template=$(cat $script_dir/template.cpp) || (echo -e "$WARNING No cpp template file found in the root folder\n" && exit)
 
-    cd ..
-    code $round_name
-fi
+problem_set=(A B C D E F)
+extension="cpp"
+round_name="$1_div_$2"
+
+pwd | cd
+mkdir $round_name
+cd "$round_name"
+
+for problem in ${problem_set[*]}; do
+    echo "$code_template" >"$problem.$extension"
+done
+
+echo >in
+echo -e "\n$BOLD$HINT g++ -o sol A.cpp; ./sol < in\n"
+
+code ../$round_name
+
+start .
