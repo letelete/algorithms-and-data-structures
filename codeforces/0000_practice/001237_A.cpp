@@ -32,7 +32,18 @@ int main() {
 
   int n;
   std::cin >> n;
-  std::cout << std::bitset<32>(n).count() << endl;
+
+  int down = 1;
+  while (n--) {
+    int x;
+    std::cin >> x;
+    if (x % 2 != 0) {
+      std::cout << ((x + down) / 2) << "\n";
+      down *= -1;
+    } else {
+      std::cout << (x / 2) << "\n";
+    }
+  }
 
   return 0;
 }

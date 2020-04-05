@@ -32,7 +32,11 @@ int main() {
 
   int n;
   std::cin >> n;
-  std::cout << std::bitset<32>(n).count() << endl;
+  while (n--) {
+    int x;
+    std::cin >> x;
+    std::cout << ((360 % (180 - x)) == 0 ? "YES" : "NO") << endl;
+  }
 
   return 0;
 }

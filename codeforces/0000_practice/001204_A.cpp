@@ -27,12 +27,34 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
+const int MAX_N = 100;
+std::bitset<MAX_N> minutes;
+
+bool is_power_of_4() {
+  if (minutes.count() != 1) return false;
+  int count = 0;
+  for (int i = 0; i < MAX_N; ++i) {
+    if (minutes[i]) break;
+    count++;
+  }
+  return count % 2 == 0;
+}
+
 int main() {
   fastIO;
 
-  int n;
-  std::cin >> n;
-  std::cout << std::bitset<32>(n).count() << endl;
+  str binary;
+  std::cin >> binary;
+  minutes = std::bitset<MAX_N>(binary);
+  bool time_is_power_of_4 = is_power_of_4();
+  int trains = 0;
+  while (minutes.count()) {
+    if (time_is_power_of_4 && minutes[0]) break;
+    ++trains;
+    minutes >>= 2;
+  }
+
+  std::cout << trains << "\n";
 
   return 0;
 }

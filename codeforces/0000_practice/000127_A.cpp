@@ -30,9 +30,24 @@ typedef std::pair<int, int> pint;
 int main() {
   fastIO;
 
-  int n;
-  std::cin >> n;
-  std::cout << std::bitset<32>(n).count() << endl;
+  int n, k;
+  std::cin >> n >> k;
+
+  int px, py;
+  double distance = 0, a, b;
+  std::cin >> px >> py;
+  for (int i = 1; i < n; ++i) {
+    int x, y;
+    std::cin >> x >> y;
+    a = abs(x - px);
+    b = abs(y - py);
+    distance += sqrtl((a * a) + (b * b));
+    px = x;
+    py = y;
+  }
+
+  double seconds = distance * k / 50;
+  std::cout << std::fixed << std::setprecision(9) << seconds << "\n";
 
   return 0;
 }

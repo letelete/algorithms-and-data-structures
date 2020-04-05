@@ -30,9 +30,34 @@ typedef std::pair<int, int> pint;
 int main() {
   fastIO;
 
-  int n;
-  std::cin >> n;
-  std::cout << std::bitset<32>(n).count() << endl;
+  i64 n, k;
+  std::cin >> n >> k;
+
+  if (n == 1) {
+    std::cout << "1\n";
+    return 0;
+  }
+
+  i64 l = k, r = n - 1, best = n;
+
+  while (l <= r) {
+    i64 mid = l + ((r - l) / 2);
+    i64 p = mid, sum = 0;
+    for (int i = 1; p; ++i) {
+      sum += p;
+      p = mid / std::pow(k, i);
+    }
+    if (sum >= n) {
+      if (best >= mid) {
+        best = mid;
+        r = mid - 1;
+      }
+    } else {
+      l = mid + 1;
+    }
+  }
+
+  std::cout << best << "\n";
 
   return 0;
 }

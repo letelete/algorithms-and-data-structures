@@ -27,12 +27,22 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
+const double PI = 3.14159265359;
+const int LIMIT = 10e4;
+
 int main() {
   fastIO;
 
-  int n;
-  std::cin >> n;
-  std::cout << std::bitset<32>(n).count() << endl;
+  double d, h, vv, e;
+  std::cin >> d >> h >> vv >> e;
+  double r = (d / 2.0);
+  double res = -((PI * r * r * h) / (PI * r * r * e - vv));
+  if (res >= 0 && res <= LIMIT) {
+    std::cout << "YES\n";
+    std::cout << std::fixed << std::setprecision(12) << res << endl;
+  } else {
+    std::cout << "NO\n";
+  }
 
   return 0;
 }

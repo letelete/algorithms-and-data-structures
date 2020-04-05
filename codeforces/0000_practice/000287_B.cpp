@@ -27,12 +27,36 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
+i64 n, k;
+
 int main() {
   fastIO;
 
-  int n;
-  std::cin >> n;
-  std::cout << std::bitset<32>(n).count() << endl;
+  std::cin >> n >> k;
+
+  --n;
+  --k;
+
+  if (n == 0) {
+    std::cout << "0\n";
+    return 0;
+  }
+  if (n > k * (k + 1) / 2) {
+    std::cout << "-1\n";
+    return 0;
+  }
+
+  i64 l = 1, r = k + 1;
+  while (l + 1 < r) {
+    i64 mid = l + ((r - l) / 2);
+    if ((k + mid) * (k - mid + 1) / 2 >= n) {
+      l = mid;
+    } else {
+      r = mid;
+    }
+  }
+
+  std::cout << (int)(k + 1 - l) << endl;
 
   return 0;
 }
