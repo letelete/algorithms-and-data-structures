@@ -27,34 +27,30 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
-int min_max(vint& stalls, int c) {
-  vint gaps(stalls.size(), 0);
+vint stalls;
+int cows;
 
-  int lo = INT_MAX;
+bool is_limit_valid(int limit) {
+  int used = 1;
+  int prev = stalls[0];
   for (int i = 1; i < stalls.size(); ++i) {
-    int gap = stalls[i] - stalls[i - 1];
-    gaps[i] = gap;
-    lo = std::min(lo, gap);
+    if (stalls[i] - prev >= limit) {
+      ++used;
+      prev = stalls[i];
+    }
+    if (used == cows) return true;
   }
-  int hi = std::accumulate(gaps.begin(), gaps.end(), 0);
-  while (lo < hi) {
-    int limit = lo + (hi - lo) / 2;
-    int gap_sum = 0;
-    int used = 1;
-    for (int i = 0; i < gaps.size(); ++i) {
-      if (gap_sum + gaps[i] <= limit) {
-        gap_sum += gaps[i];
-      } else {
-        used++;
-        gap_sum = gaps[i];
-      }
-    }
+  return false;
+}
 
-    if (used <= c) {
-      hi = limit;
-    } else {
-      lo = limit + 1;
-    }
+int largest_min_gap() {
+  int lo = 0;
+  int hi = stalls.back() - stalls.front();
+
+  while (hi - lo > 1) {
+    int limit = lo + ((hi - lo) / 2);
+    bool limit_ok = is_limit_valid(limit);
+    (limit_ok ? lo : hi) = limit;
   }
 
   return lo;
@@ -63,17 +59,17 @@ int min_max(vint& stalls, int c) {
 int main() {
   fastIO;
 
-  int t;
+  int t, n;
+
   std::cin >> t;
   while (t--) {
-    int n, c;
-    std::cin >> n >> c;
-    vint stalls(n);
+    std::cin >> n >> cows;
+    stalls = vint(n);
     for (int& x : stalls) std::cin >> x;
 
     std::sort(stalls.begin(), stalls.end());
 
-    std::cout << min_max(stalls, c) << "\n";
+    std::cout << largest_min_gap() << "\n";
   }
 
   return 0;
