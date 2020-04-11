@@ -27,8 +27,37 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
+struct box {
+  int left = 0;
+  int worth = 0;
+};
+
+bool compare(const box& a, const box& b) {
+  if (a.worth == b.worth) return a.left > b.left;
+  return a.worth > b.worth;
+}
+
 int main() {
   fastIO;
+
+  int n, m;
+  std::cin >> m >> n;
+  v<box> boxes(n);
+  for (int i = 0; i < n; ++i) {
+    std::cin >> boxes[i].left >> boxes[i].worth;
+  }
+
+  std::sort(boxes.begin(), boxes.end(), compare);
+
+  i64 cost = 0;
+  for (box& b : boxes) {
+    m -= b.left;
+    if (m < 0) b.left += m;
+    cost += b.left * b.worth;
+    if (m < 0) break;
+  }
+
+  std::cout << cost << "\n";
 
   return 0;
 }

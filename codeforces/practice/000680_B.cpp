@@ -30,6 +30,29 @@ typedef std::pair<int, int> pint;
 int main() {
   fastIO;
 
+  int n, m;
+  std::cin >> n >> m;
+  vint c(n);
+  for (int& x : c) std::cin >> x;
+
+  int l = m - 1;
+  int r = l;
+
+  int count = 0;
+  while (l >= 0 || r < n) {
+    if (l >= 0 && r < n) {
+      if (c[l] == c[r] && c[l]) count += l != r ? 2 : 1;
+    } else if (l >= 0) {
+      count += c[l];
+    } else {
+      count += c[r];
+    }
+    if (l >= 0) l--;
+    if (r < n) r++;
+  }
+
+  std::cout << count << "\n";
+
   return 0;
 }
 

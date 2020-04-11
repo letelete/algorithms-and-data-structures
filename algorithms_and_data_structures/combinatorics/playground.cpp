@@ -27,8 +27,21 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
+const i64 mod = 10e9 + 7;
+
 int main() {
   fastIO;
+
+  std::cout << "factorial: " << mod_factorial(52, 5) << "\n";
+  return 0;
+  v<str> in{{"A", "A", "A", "B", "B"}};
+
+  std::sort(in.begin(), in.end());
+
+  do {
+    for (const auto& x : in) std::cout << x << " ";
+    std::cout << "\n";
+  } while (std::next_permutation(in.begin(), in.end()));
 
   return 0;
 }

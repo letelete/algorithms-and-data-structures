@@ -30,6 +30,27 @@ typedef std::pair<int, int> pint;
 int main() {
   fastIO;
 
+  int n;
+  std::cin >> n;
+  vint stages(n);
+  for (int& x : stages) std::cin >> x;
+
+  int best = 1, last_pitfall = 0, count = 1;
+  for (int i = 1; i < n; ++i) {
+    if (stages[i - 1] >= stages[i]) {
+      if (stages[i - 1] > stages[i]) last_pitfall = i;
+      count++;
+    } else {
+      count++;
+    }
+    if (i + 1 == n || stages[i + 1] > stages[i] && stages[i - 1] >= stages[i]) {
+      best = std::max(best, count);
+      count = i - last_pitfall + 1;
+    }
+  }
+
+  std::cout << best << "\n";
+
   return 0;
 }
 

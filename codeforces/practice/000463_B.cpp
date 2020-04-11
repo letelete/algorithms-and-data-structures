@@ -30,6 +30,26 @@ typedef std::pair<int, int> pint;
 int main() {
   fastIO;
 
+  int n;
+  std::cin >> n;
+
+  int energy = 0;
+  int h = 0, next;
+  int boosts = 0;
+
+  for (int i = 0; i < n; ++i) {
+    std::cin >> next;
+
+    energy += h - next;
+    if (energy < 0) {
+      boosts += abs(energy);
+      energy = 0;
+    }
+    h = next;
+  }
+
+  std::cout << boosts << "\n";
+
   return 0;
 }
 
