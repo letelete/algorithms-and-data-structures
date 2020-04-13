@@ -33,9 +33,21 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
+int b, p, m;
+
+int pow(int a, int p) {
+  if (!p) return 1;
+  int sq = pow(a, p / 2);
+  sq = ((sq % m) * (sq % m)) % m;
+  if (p % 2 != 0) sq *= (a % m);
+  return sq % m;
+}
+
 int main() {
   fastIO;
-
+  while (std::cin >> b >> p >> m) {
+    std::cout << pow(b, p) << "\n";
+  }
   return 0;
 }
 

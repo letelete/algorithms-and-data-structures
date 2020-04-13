@@ -27,42 +27,12 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
-int count_steps(vstr& ds, int count) {
-  if (ds.empty()) return count;
-  const int limit = 99;
-  vstr nds;
-  int cur_sum = 0;
-  count++;
-  for (int i = 0; i < ds.size(); ++i) {
-    int next = std::stoi(ds[i]);
-    int final_next = (next < 10) ? next : ((next % 10) + (next / 10));
-    if (cur_sum + final_next > limit) {
-      nds.push_back(std::to_string(cur_sum));
-      cur_sum = final_next;
-    } else {
-      cur_sum += final_next;
-    }
-  }
-  if (cur_sum != 0) nds.push_back(std::to_string(cur_sum));
-
-  if (nds.size() == 1 && std::stoi(nds[0]) <= 9) nds.clear();
-
-  return count_steps(nds, count);
-}
-int solve(str& s) {
-  if (s.size() <= 1 && std::stoi(s) < 10) return 0;
-  vstr ds((s.size() + 1) / 2, "0");
-  str next(2, '0');
-  for (int i = 0, l = 0, d = 0; i < s.size(); ++i) {
-    next[l++] = s[i];
-    if (l >= 2 || i == s.size() - 1) {
-      ds[d++] = next;
-      next = str(2, '0');
-      l = 0;
-    }
-  }
-
-  return count_steps(ds, 0);
+int solve(str& s, int count) {
+  if (s.length() <= 1) return count;
+  int next = 0;
+  for (auto const& c : s) next += c - '0';
+  s = std::to_string(next);
+  return solve(s, ++count);
 }
 
 int main() {
@@ -70,8 +40,7 @@ int main() {
 
   str n;
   std::cin >> n;
-
-  std::cout << solve(n) << "\n";
+  std::cout << solve(n, 0) << "\n";
 
   return 0;
 }

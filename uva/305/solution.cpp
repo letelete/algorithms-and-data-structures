@@ -33,8 +33,53 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
+int n, m;
+
+int calc_gcd(int a, int b) { return !b ? a : calc_gcd(b, a % b); }
+
+i64 solve() {
+  if (n == m) return 1;
+  vint a, b;
+  int start_a_at = std::max(n - m, m) + 1;
+
+  for (int i = start_a_at; i <= n; ++i) a.push_back(i);
+  for (int i = 2; i <= std::min(n - m, m); ++i) b.push_back(i);
+
+  for (int i = 0; i < b.size(); ++i) {
+    for (int j = 0; j < a.size(); ++j) {
+      if (b[i] == 1) break;
+      if (a[j] == 1) continue;
+
+      int max_val = std::max(b[i], a[j]);
+      int min_val = std::min(b[i], a[j]);
+      if (max_val % min_val == 0) {
+        a[j] /= min_val;
+        b[i] /= min_val;
+        continue;
+      }
+
+      int gcd = calc_gcd(max_val, min_val);
+      if (gcd <= 1) continue;
+      a[j] /= gcd;
+      b[i] /= gcd;
+    }
+  }
+
+  i64 am = 1, bm = 1;
+  for (const auto& x : a) am *= x;
+  for (const auto& x : b) bm *= x;
+
+  return am / bm;
+}
+
 int main() {
   fastIO;
+
+  while (std::cin >> n >> m && n != 0) {
+    i64 ans = solve();
+    std::cout << n << " things taken " << m << " at a time is " << ans
+              << " exactly.\n";
+  }
 
   return 0;
 }

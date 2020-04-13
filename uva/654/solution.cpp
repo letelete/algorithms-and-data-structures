@@ -33,8 +33,45 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
+void solve(str a, str b) {
+  std::reverse(a.begin(), a.end());
+  std::reverse(b.begin(), b.end());
+  int maxlen = std::max(a.length(), b.length());
+  vint prod(2 * maxlen, 0);
+  for (int i = prod.size() - 1, j = 0; i >= prod.size() - maxlen; --i, j++) {
+    if (j >= a.size() && j >= b.size()) break;
+    int next = 0;
+    if (j < a.size()) next += a[j] - '0';
+    if (j < b.size()) next += b[j] - '0';
+    prod[i] = next;
+  }
+
+  for (int i = prod.size() - 1, stay, goes; i > 0; --i) {
+    stay = prod[i] <= 9 ? prod[i] : prod[i] % 10;
+    goes = prod[i] / 10;
+    prod[i] = stay;
+    prod[i - 1] += goes;
+  }
+
+  bool read = false;
+  for (int i = 0; i < prod.size(); ++i) {
+    if (!read && prod[i]) read = true;
+    if (read) std::cout << prod[i];
+  }
+
+  std::cout << "\n";
+}
+
 int main() {
   fastIO;
+
+  int n;
+  str a, b;
+  std::cin >> n;
+  while (n--) {
+    std::cin >> a >> b;
+    solve(a, b);
+  }
 
   return 0;
 }
