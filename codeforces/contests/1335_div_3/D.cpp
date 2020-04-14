@@ -38,26 +38,24 @@ const int SIZE = 9;
 v<uset<int>> bl;
 v<bool> left;
 
-v<vint> solve(v<vint> sudoku) {
+void solve(v<vint>& sudoku) {
   int prev;
   int pos = 0;
   for (int block = 0; block < 3; ++block) {
-    for (int i = 1; i <= SIZE; ++i) {
-      if (bl[block].count(i)) continue;
-      if (!left[i]) continue;
+    int remain = 3;
+    while (remain--) {
+      int next = 1;
+      while ((bl[block].count(next) || !left[next]) && next < SIZE) ++next;
       if (block == 2 && pos == SIZE - 1) {
         sudoku[pos][pos] = prev;
-      } else {
-        sudoku[pos][pos] = i;
-        prev = i;
-        left[i] = false;
-        pos++;
+        break;
       }
-      i = SIZE;
+      sudoku[pos][pos] = next;
+      prev = next;
+      left[next] = false;
+      pos++;
     }
   }
-
-  return sudoku;
 }
 
 int main() {
@@ -78,14 +76,16 @@ int main() {
     left = v<bool>(SIZE + 1, true);
     left[0] = false;
     bl = v<uset<int>>(3);
-    bl[0] = uset<int>({sudoku[0][0], sudoku[1][1], sudoku[2][2]});
-    bl[1] = uset<int>({sudoku[3][3], sudoku[4][4], sudoku[5][5]});
-    bl[2] = uset<int>({sudoku[6][6], sudoku[7][7], sudoku[8][8]});
-    v<vint> ans = solve(sudoku);
-    for (int i = 0; i < SIZE; ++i) {
-      for (int j = 0; j < SIZE; ++j) {
-        std::cout << ans[i][j];
-      }
+
+    for (int i = 1, j = 0; i <= SIZE; ++i) {
+      if (i % 3 == 0 && j < 2) j++;
+      bl[j].insert(sudoku[i - 1][i - 1]);
+    }
+
+    solve(sudoku);
+
+    for (const auto& x : sudoku) {
+      for (const auto& y : x) std::cout << y;
       std::cout << "\n";
     }
   }

@@ -33,30 +33,29 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
-void solve(str a, str b) {
-  std::reverse(a.begin(), a.end());
-  std::reverse(b.begin(), b.end());
+void solve(const str& a, const str& b) {
   int maxlen = std::max(a.length(), b.length());
   vint prod(2 * maxlen, 0);
-  for (int i = prod.size() - 1, j = 0; i >= prod.size() - maxlen; --i, j++) {
-    if (j >= a.size() && j >= b.size()) break;
-    int next = 0;
-    if (j < a.size()) next += a[j] - '0';
-    if (j < b.size()) next += b[j] - '0';
-    prod[i] = next;
+
+  for (int i = 0; i < maxlen; ++i) {
+    if (i < a.length()) prod[i] += a[i] - '0';
+    if (i < b.length()) prod[i] += b[i] - '0';
   }
 
-  for (int i = prod.size() - 1, stay, goes; i > 0; --i) {
-    stay = prod[i] <= 9 ? prod[i] : prod[i] % 10;
-    goes = prod[i] / 10;
-    prod[i] = stay;
-    prod[i - 1] += goes;
-  }
-
-  bool read = false;
+  int last_significant_index = 0;
   for (int i = 0; i < prod.size(); ++i) {
-    if (!read && prod[i]) read = true;
-    if (read) std::cout << prod[i];
+    int stay = prod[i] <= 9 ? prod[i] : prod[i] % 10;
+    int goes = prod[i] / 10;
+    prod[i] = stay;
+    prod[i + 1] += goes;
+    if (stay || goes) last_significant_index = i;
+  }
+
+  bool is_leading_zero = true;
+  for (int i = 0; i <= last_significant_index; ++i) {
+    if (!prod[i] && is_leading_zero) continue;
+    is_leading_zero = false;
+    std::cout << prod[i];
   }
 
   std::cout << "\n";
