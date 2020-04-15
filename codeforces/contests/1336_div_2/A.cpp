@@ -32,22 +32,16 @@ typedef std::vector<int> vint;
 typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
-
+i64 a, b, c, d;
+void solve() { std::cout << b << " " << c << " " << c << "\n"; }
 int main() {
   fastIO;
 
   int t;
   std::cin >> t;
   while (t--) {
-    int s = 9;
-    str line;
-    while (s--) {
-      std::cin >> line;
-      for (auto& x : line) {
-        std::cout << (x - '0' == 2 ? '1' : x);
-      }
-      std::cout << "\n";
-    }
+    std::cin >> a >> b >> c >> d;
+    solve();
   }
 
   return 0;

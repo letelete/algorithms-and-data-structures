@@ -39,15 +39,10 @@ int main() {
   int t;
   std::cin >> t;
   while (t--) {
-    int s = 9;
-    str line;
-    while (s--) {
-      std::cin >> line;
-      for (auto& x : line) {
-        std::cout << (x - '0' == 2 ? '1' : x);
-      }
-      std::cout << "\n";
-    }
+    int x, n, m;
+    std::cin >> x >> n >> m;
+    while (n-- && x >= 20) x = (x / 2) + 10;
+    std::cout << ((x / 10) + (x % 10 != 0 ? 1 : 0) > m ? "NO" : "YES") << "\n";
   }
 
   return 0;
