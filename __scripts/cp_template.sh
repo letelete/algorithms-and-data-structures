@@ -21,7 +21,7 @@ pwd | cd
 
 echo "$code_template" >"$filename.$extension"
 echo >in
-echo -e "\n$BOLD$HINT g++ -o sol $filename.cpp; ./sol < in\n"
+echo -e $(runcpp.sh $filename)
 
 code "$filename.$extension"
 

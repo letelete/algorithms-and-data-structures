@@ -27,7 +27,7 @@ for problem in ${problem_set[*]}; do
 done
 
 echo >in
-echo -e "\n$BOLD$HINT g++ -o sol A.cpp; ./sol < in\n"
+echo -e $(runcpp.sh A)
 
 code ../$round_name
 
