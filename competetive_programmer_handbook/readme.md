@@ -4,4 +4,4 @@ This directory contains all files related to my studies of the "Competetive Prog
 
 # [Problem set](https://cses.fi/problemset/)
 
-![Studying](resources/studying.gif)
+![CPHB](../__misc/cphb.gif)
