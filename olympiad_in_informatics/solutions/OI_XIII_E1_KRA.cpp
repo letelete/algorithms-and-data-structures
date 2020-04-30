@@ -1,22 +1,3 @@
-# [OI_XIII_E1_KRA]()
-
-#### OI Stage I
-
-#### Memory limit 32 MB
-
----
-
-#### Score 100/100
-
-### Complexity
-
-#### Time: O(n)
-
-#### Space: O(n)
-
----
-
-```C++
 #include <bits/stdc++.h>
 
 #pragma GCC target("popcnt")
@@ -109,5 +90,3 @@ int main() {
  * 1. No checking for integer overflow in the addition operation
  * (use i64 instead)
  */
-```
-
