@@ -34,8 +34,8 @@ typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
 struct Node {
-  char letter;
   int weight;
+  char letter;
   char code = '\0';
   Node* left = nullptr;
   Node* right = nullptr;
@@ -51,7 +51,8 @@ struct Comp {
 void traverse_tree(Node* node, str code) {
   if (!node) return;
   code.push_back(node->code);
-  if (node->letter) std::cout << node->letter << " " << code << "\n";
+  if (node->letter)
+    std::cout << node->letter << " " << code << " " << node->weight << "\n";
   traverse_tree(node->left, code);
   traverse_tree(node->right, code);
 }
@@ -59,7 +60,7 @@ void traverse_tree(Node* node, str code) {
 int main() {
   fastIO;
 
-  str sequence = "AABACDACA" /*"The quick brown fox jumps over the lazy dog"*/;
+  str sequence = "AAAAAAAAAAAABBBDAJKHIDKSGDYUIGSDUICCD";
 
   umap<char, int> occurences;
   for (const auto& letter : sequence) occurences[letter]++;
@@ -79,6 +80,7 @@ int main() {
     Node* parent = new Node();
     Node* right = root;
     Node* left = nodes.top();
+    std::cout << nodes.top()->letter << " " << nodes.top()->weight << "\n";
     nodes.pop();
     right->code = '1';
     left->code = '0';
