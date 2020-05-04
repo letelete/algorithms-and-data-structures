@@ -1,0 +1,85 @@
+#include <bits/stdc++.h>
+
+#pragma GCC target("popcnt")
+
+#define fastIO      \
+  std::cin.tie(0);  \
+  std::cout.tie(0); \
+  std::ios::sync_with_stdio(0);
+
+template <typename T>
+using v = std::vector<T>;
+template <typename T>
+using q = std::queue<T>;
+template <typename T>
+using pq = std::priority_queue<T>;
+template <typename T>
+using set = std::set<T>;
+template <typename T>
+using uset = std::unordered_set<T>;
+template <typename K, typename V>
+using umap = std::unordered_map<K, V>;
+template <typename K, typename V>
+using map = std::map<K, V>;
+template <typename T, typename K>
+using pair = std::pair<T, K>;
+
+typedef long long int i64;
+typedef unsigned long long ui64;
+
+typedef std::string str;
+typedef std::vector<int> vint;
+typedef std::vector<char> vchar;
+typedef std::vector<std::string> vstr;
+typedef std::pair<int, int> pint;
+
+int main() {
+  fastIO;
+
+  int n, m;
+  std::cin >> n >> m;
+
+  int count = 0, next_layer = 0, current_layer = 1;
+
+  q<int> layer{{n}};
+  uset<int> visited{{n}};
+
+  if (n == m) layer.pop();
+
+  while (!layer.empty()) {
+    int next = layer.front(), lo = next - 1, hi = next * 2;
+    layer.pop();
+    if (next == m) break;
+    bool test_lo = next > 1 && !visited.count(lo);
+    bool test_hi = next < m && !visited.count(hi);
+    if (test_lo) {
+      layer.push(lo);
+      visited.insert(lo);
+    }
+    if (test_hi) {
+      layer.push(hi);
+      visited.insert(hi);
+    }
+    next_layer += test_lo + test_hi;
+    if (!(--current_layer)) {
+      count++;
+      current_layer = next_layer;
+      next_layer = 0;
+    }
+  }
+
+  std::cout << count << "\n";
+
+  return 0;
+}
+
+/** ℹ Useful
+ * __builtin_popcount/ll
+ * __builtin_clz/ll
+ * __builtin_ctz/ll
+ */
+
+/** ⚠ Common mistakes
+ * 1. No checking for integer overflow in the addition operation
+ * (use i64 instead)
+ */
