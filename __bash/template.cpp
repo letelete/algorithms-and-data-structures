@@ -36,6 +36,8 @@ typedef std::pair<int, int> pint;
 int main() {
   fastIO;
 
+  
+
   return 0;
 }
 
@@ -43,9 +45,4 @@ int main() {
  * __builtin_popcount/ll
  * __builtin_clz/ll
  * __builtin_ctz/ll
- */
-
-/** ⚠ Common mistakes
- * 1. No checking for integer overflow in the addition operation
- * (use i64 instead)
  */
