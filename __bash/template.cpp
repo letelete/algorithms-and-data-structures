@@ -24,6 +24,12 @@ using map = std::map<K, V>;
 template <typename T, typename K>
 using pair = std::pair<T, K>;
 
+template <typename T>
+T accumulate(const std::vector<T>& vec, int start_from = 0) {
+  T sum = std::accumulate(vec.begin(), vec.end(), start_from);
+  return sum;
+}
+
 typedef long long int i64;
 typedef unsigned long long ui64;
 
@@ -37,7 +43,6 @@ int main() {
   fastIO;
 
   
-
   return 0;
 }
 
