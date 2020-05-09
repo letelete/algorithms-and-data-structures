@@ -2,7 +2,7 @@
 #include "../include/input.hh"
 
 Input* input;
-BoundedKnapsackSolver* boundedKnapsackSolver;
+BoundedKnapsackSolver* solver;
 
 void initialize() {
   input = new Input();
@@ -10,13 +10,18 @@ void initialize() {
   auto knapsack = input->generate_knapsack();
   auto items = input->generate_items();
 
-  boundedKnapsackSolver = new BoundedKnapsackSolver(knapsack, items);
+  solver = new BoundedKnapsackSolver(knapsack, items);
+  solver->solve();
 }
 
 int main() {
   initialize();
+
   input->print_knapsack();
   input->print_generated_items();
-  boundedKnapsackSolver->print_maximal_profit();
+
+  solver->print_most_profitable_items();
+  solver->print_maximal_profit();
+
   return 0;
 }

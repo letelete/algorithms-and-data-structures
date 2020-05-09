@@ -7,10 +7,12 @@
 
 #include "item.hh"
 #include "knapsack.hh"
+#include "pretty_printer.hh"
 
 class Input {
  private:
   typedef std::pair<int, int> MinMax;
+  using Time = std::chrono::high_resolution_clock;
 
   static const MinMax GENERATED_ITEMS_RANGE;
   static const MinMax KNAPSACK_CAPACITY_RANGE;
@@ -20,7 +22,6 @@ class Input {
 
   static const std::string ITEM_NAMES_PATH;
 
-  using Time = std::chrono::high_resolution_clock;
   unsigned seed = static_cast<unsigned>(Time::now().time_since_epoch().count());
   std::mt19937 gen = std::mt19937(seed);
 
@@ -32,9 +33,15 @@ class Input {
   std::vector<Item> items;
   Knapsack knapsack;
 
+  PrettyPrinter* printer;
+
   void read_item_names();
 
  public:
+  Input() : printer(new PrettyPrinter){};
+
+  ~Input() { delete printer; }
+
   Knapsack generate_knapsack();
 
   std::vector<Item> generate_items();

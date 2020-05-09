@@ -8,10 +8,13 @@ struct Item {
   int cost;
   int weight;
   int quantity;
-  void print() {
-    std::cout << quantity << " x " << name << "\n";
-    std::cout << cost << " $\n";
-    std::cout << weight << " kg\n";
-    std::cout << "--\n";
+
+  bool operator==(const Item& item) const {
+    return name == item.name && cost == item.cost && weight == item.weight;
+  }
+
+  bool operator<(const Item& item) const {
+    if (name == item.name) return cost > item.cost;
+    return name > item.name;
   }
 };
