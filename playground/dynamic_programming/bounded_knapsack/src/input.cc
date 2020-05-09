@@ -1,9 +1,9 @@
-#include "input.hh"
+#include "../include/input.hh"
 
 #include <fstream>
 #include <iostream>
 
-const std::string Input::ITEM_NAMES_PATH = "../assets/items_names.data";
+const std::string Input::ITEM_NAMES_PATH = "../assets/item_names.data";
 
 const Input::MinMax Input::GENERATED_ITEMS_RANGE = std::make_pair(1, 305);
 const Input::MinMax Input::KNAPSACK_CAPACITY_RANGE = std::make_pair(1, 5000);
@@ -27,6 +27,7 @@ void Input::read_item_names() {
 
 Knapsack Input::generate_knapsack() {
   knapsack.capacity = random(KNAPSACK_CAPACITY_RANGE);
+  return knapsack;
 }
 
 std::vector<Item> Input::generate_items() {
@@ -42,4 +43,14 @@ std::vector<Item> Input::generate_items() {
   }
 
   return items;
+}
+
+void Input::print_knapsack() {
+  std::cout << "Knapsack:\n";
+  std::cout << " capacity <= " << knapsack.capacity << "\n";
+}
+
+void Input::print_generated_items() {
+  std::cout << "Generated items:\n";
+  for (auto& item : items) item.print();
 }

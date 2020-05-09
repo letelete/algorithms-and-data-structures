@@ -1,1 +1,1 @@
-#include "knapsack.hh"
+#include "../include/knapsack.hh"

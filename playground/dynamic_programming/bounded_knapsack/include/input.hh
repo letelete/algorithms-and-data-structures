@@ -1,3 +1,5 @@
+#pragma once
+
 #include <chrono>
 #include <random>
 #include <string>
@@ -23,9 +25,7 @@ class Input {
   std::mt19937 gen = std::mt19937(seed);
 
   int random(MinMax range) {
-    int from = range.first;
-    int to = range.second;
-    return std::uniform_int_distribution<int>{from, to}(gen);
+    return std::uniform_int_distribution<int>{range.first, range.second}(gen);
   }
 
   std::vector<std::string> item_names;
@@ -35,9 +35,11 @@ class Input {
   void read_item_names();
 
  public:
-  Input() {}
-
   Knapsack generate_knapsack();
 
   std::vector<Item> generate_items();
+
+  void print_knapsack();
+
+  void print_generated_items();
 };

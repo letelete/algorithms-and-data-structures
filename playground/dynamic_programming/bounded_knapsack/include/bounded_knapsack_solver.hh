@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * The Bounded Knapsack Problem:
  * Maximize the profit of possible items combination which you can fit into your

@@ -1,21 +1,17 @@
-#include "bounded_knapsack_solver.hh"
+#include "../include/bounded_knapsack_solver.hh"
 
 #include <iostream>
 #include <numeric>
 
 void BoundedKnapsackSolver::print_maximal_profit() {
-  std::cout << "Maximal profit: " << maximal_profit << "\n";
+  std::cout << "Maximal profit: " << maximal_profit << "\n\n";
 }
 
 void BoundedKnapsackSolver::print_most_profitable_items() {
   if (most_profitable_items.empty()) return;
   std::cout << "Most profitable items:\n";
-  for (const auto& it : most_profitable_items) {
-    std::cout << "|" << it.weight << " x " << it.name << "\n";
-    std::cout << "  |" << it.cost << " $\n";
-    std::cout << "  |" << it.weight << " kg\n";
-  }
-  std::cout << "Maximal profit: " << maximal_profit << "\n";
+  for (auto& it : most_profitable_items) it.print();
+  std::cout << "\n";
 }
 
 void BoundedKnapsackSolver::solve() {
@@ -33,6 +29,8 @@ void BoundedKnapsackSolver::solve() {
         return sum + (item.cost * item.weight);
       });
 
+  int absolute_items_size = items.size() + 1;
+
   /** Two dimensional table representing dynamic programming states of
    * possible weights for the first i-th elements with given j-th price.
    * where:
@@ -40,15 +38,15 @@ void BoundedKnapsackSolver::solve() {
    * - j - maximal profit for the first i-th items
    */
   std::vector<std::vector<int>> dp(
-      items.size() + 1, std::vector<int>(max_possible_profit + 1, ILLEGAL));
+      absolute_items_size, std::vector<int>(max_possible_profit + 1, ILLEGAL));
 
   // The base case is a state, where we didn't use any of items, so we dispose
   // all of them.
-  for (int i = 0; i < dp.size(); ++i) dp[i][0] = 0;
+  for (int i = 0; i < absolute_items_size; ++i) dp[i][0] = 0;
 
   int maximal_profit = 0;
 
-  for (int i = 1; i < dp.size(); ++i) {
+  for (int i = 1; i < absolute_items_size; ++i) {
     Item& item = items[i];
     while (item.quantity--) {
       for (int j = maximal_profit; j >= 0; ++j) {

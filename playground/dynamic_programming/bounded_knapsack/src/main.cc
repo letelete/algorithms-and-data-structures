@@ -1,5 +1,5 @@
-#include "bounded_knapsack_solver.hh"
-#include "input.hh"
+#include "../include/bounded_knapsack_solver.hh"
+#include "../include/input.hh"
 
 Input* input;
 BoundedKnapsackSolver* boundedKnapsackSolver;
@@ -15,6 +15,8 @@ void initialize() {
 
 int main() {
   initialize();
+  input->print_knapsack();
+  input->print_generated_items();
   boundedKnapsackSolver->print_maximal_profit();
   return 0;
 }
