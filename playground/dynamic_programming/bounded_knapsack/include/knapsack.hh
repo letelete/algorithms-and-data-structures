@@ -1,0 +1,3 @@
+struct Knapsack {
+  int capacity;
+};
