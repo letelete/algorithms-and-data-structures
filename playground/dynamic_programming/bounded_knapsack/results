@@ -1,0 +1,20 @@
+Your knapsack has 11 kg of capacity
+You have 3 unique items available with a total cost of 85 $
+*************************************************************************
+*  Bottle o' Enchanting *           Spruce Boat *        Book and Quill *
+*                  19 $ *                   7 $ *                  11 $ *
+*                  1 kg *                  1 kg *                  3 kg *
+*                    x2 *                    x2 *                    x3 *
+*************************************************************************
+
+-------
+
+By selecting following items you will earn 74 $
+
+*************************************************************************
+*  Bottle o' Enchanting *           Spruce Boat *        Book and Quill *
+*                  19 $ *                   7 $ *                  11 $ *
+*                  1 kg *                  1 kg *                  3 kg *
+*                    x2 *                    x2 *                    x2 *
+*************************************************************************
+That's the highest possible profit you can get :)
