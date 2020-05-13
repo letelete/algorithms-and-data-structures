@@ -1,3 +1,22 @@
+# [OI_XVII_E1_GIL]()
+
+---
+
+#### Score 100/100
+
+### Complexity
+
+```
+E - Nodes's  Edges
+```
+
+#### Time: O(n \* |En|)
+
+#### Space: O(n \* m)
+
+---
+
+```C++
 #include <bits/stdc++.h>
 
 #pragma GCC target("popcnt")
@@ -99,14 +118,4 @@ int main() {
 
   return 0;
 }
-
-/** ℹ Useful
- * __builtin_popcount/ll
- * __builtin_clz/ll
- * __builtin_ctz/ll
- */
-
-/** ⚠ Common mistakes
- * 1. No checking for integer overflow in the addition operation
- * (use i64 instead)
- */
+```

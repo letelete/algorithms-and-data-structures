@@ -1,3 +1,16 @@
+# [OI_XV_E1_PLA](https://szkopul.edu.pl/problemset/problem/au-E9FH96-3U9rCKhcNsD5n9/site/?key=statement)
+
+---
+
+### Complexity
+
+#### Time: O(n)
+
+#### Space: O(n)
+
+---
+
+```C++
 #include <bits/stdc++.h>
 
 #pragma GCC target("popcnt")
@@ -33,49 +46,26 @@ typedef std::vector<char> vchar;
 typedef std::vector<std::string> vstr;
 typedef std::pair<int, int> pint;
 
-struct compare {
-  bool operator()(const pint& p, const int& key) { return (p.first < key); }
-  bool operator()(const int& key, const pint& p) { return key < p.first; }
-};
-
 int main() {
   fastIO;
 
-  int n, m, last_free_index;
-  // width;index;
-  v<pint> parts;
-  uset<int> spotted_widths;
-  std::cin >> n >> m;
-  for (int i = 1; i <= n; ++i) {
-    int width;
-    std::cin >> width;
-    if (spotted_widths.count(width)) continue;
-    spotted_widths.insert(width);
-    parts.push_back(std::make_pair(width, i));
+  int n, count = 0, junk_input;
+  std::cin >> n;
+
+  vint build(n);
+  for (auto& x : build) std::cin >> junk_input >> x;
+
+  std::stack<int> locals;
+
+  for (int i = 0; i < n; ++i) {
+    while (!locals.empty() && locals.top() > build[i]) locals.pop();
+    if (locals.empty() || locals.top() < build[i]) {
+      locals.push(build[i]);
+      count++;
+    }
   }
 
-  std::sort(parts.begin(), parts.end());
-  last_free_index = n;
-
-  for (int i = 0; i < m; ++i) {
-    int next;
-    std::cin >> next;
-    auto it = std::lower_bound(parts.begin(), parts.end(), next, compare());
-    if (it == parts.begin()) {
-      last_free_index--;
-      continue;
-    }
-    it--;
-    pint disk = *it;
-    if (disk.second > last_free_index) {
-      last_free_index--;
-      continue;
-    }
-    int next_disk_index = disk.second - 1;
-    last_free_index = next_disk_index - 1;
-  }
-
-  std::cout << ((last_free_index < 0) ? 0 : (last_free_index + 1)) << "\n";
+  std::cout << count << "\n";
 
   return 0;
 }
@@ -90,3 +80,4 @@ int main() {
  * 1. No checking for integer overflow in the addition operation
  * (use i64 instead)
  */
+```
