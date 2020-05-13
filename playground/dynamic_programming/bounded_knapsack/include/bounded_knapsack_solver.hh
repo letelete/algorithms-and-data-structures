@@ -62,10 +62,22 @@ class BoundedKnapsackSolver {
   }
 
  private:
+  /**
+   * We will mark an illegal cell with -1 value to identify that we cannot
+   * build on top of it.
+   */
+  static const int _UNREACHABLE_PRICE = -1;
+
   int _maximal_items_value;
   int _maximal_profit;
   Items _most_profitable_items;
   bool _solved;
+
+  /**
+   * Provides access to reachable cells of certain price to calculate the best
+   * weight for each.
+   */
+  std::vector<int> _weight_at_price;
 
   /**
    * Describes a relation of items saved as values needed to construct certain
@@ -74,7 +86,6 @@ class BoundedKnapsackSolver {
    * This structure lets access items relations in constant time.
    * Construction complexity is O(1).
    */
-
   std::unordered_map<int, std::stack<Item*>> _price_relation;
 
   PrettyPrinter* _printer;
@@ -84,4 +95,9 @@ class BoundedKnapsackSolver {
   void _construct_most_profitable_items();
 
   void _solve();
+
+  void _update_weight_price(Item* item, int price);
+
+  void _update_price_relation(Item* reached_with, int current_price,
+                              int reachable_price);
 };
