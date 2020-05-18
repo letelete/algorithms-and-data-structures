@@ -49,13 +49,10 @@ int main() {
     return 0;
   }
 
-  int x = (s + 1) - n;
-  int k = 1 + ((x - 1) / 2);
+  int x = s - ((n - 1) * 2);
   std::cout << "YES\n";
-  --n;
-  while (n--) std::cout << "1 ";
-  std::cout << x << "\n";
-  std::cout << k << "\n";
+  for (int i = 1; i < n; ++i) std::cout << "2 ";
+  std::cout << x << "\n1\n";
 
   return 0;
 }
