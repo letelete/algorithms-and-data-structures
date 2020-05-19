@@ -1,53 +1,54 @@
 #include <bits/stdc++.h>
 
-#pragma GCC target("popcnt")
-
-#define fastIO      \
+namespace cp {
+#define _optimize   \
   std::cin.tie(0);  \
   std::cout.tie(0); \
   std::ios::sync_with_stdio(0);
 
-template <typename T>
-using v = std::vector<T>;
-template <typename T>
-using q = std::queue<T>;
-template <typename T>
-using pq = std::priority_queue<T>;
-template <typename T>
-using set = std::set<T>;
-template <typename T>
-using uset = std::unordered_set<T>;
-template <typename K, typename V>
-using umap = std::unordered_map<K, V>;
-template <typename K, typename V>
-using map = std::map<K, V>;
-template <typename T, typename K>
-using pair = std::pair<T, K>;
+#define _v std::vector
+#define _q std::queue
+#define _pq std::priority_queue
+#define _uset std::unordered_set
+#define _set std::set
+#define _map std::map
+#define _umap std::unordered_map
+
+#define _pair std::pair
+#define _makepair std::make_pair
+#define _maketuple std::make_tuple
+
+#define _cin std::cin
+#define _cout std::cout
+
+using _ll = long long int;
+using _ull = unsigned long long;
+using _str = std::string;
+};  // namespace cp
+
+namespace debug {
+// using Time = std::chrono::high_resolution_clock;
+// auto seed = Time::now().time_since_epoch().count();
+// std::mt19937 gen = std::mt19937(seed);
+// template <typename T>
+// T random(T from, T to) {
+//   return std::uniform_int_distribution<T>{from, to}(gen);
+// }
 
 template <typename T>
-T accumulate(const std::vector<T>& vec, int start_from = 0) {
-  T sum = std::accumulate(vec.begin(), vec.end(), start_from);
-  return sum;
+void watch(T var, std::string name = "#") {
+  std::cout << "Watching: " << name << " | " << var << "\n";
 }
+};  // namespace debug
 
-typedef long long int i64;
-typedef unsigned long long ui64;
+using namespace cp;
 
-typedef std::string str;
-typedef std::vector<int> vint;
-typedef std::vector<char> vchar;
-typedef std::vector<std::string> vstr;
-typedef std::pair<int, int> pint;
+
 
 int main() {
-  fastIO;
+  _optimize;
 
   
+
   return 0;
 }
-
-/** ℹ Useful
- * __builtin_popcount/ll
- * __builtin_clz/ll
- * __builtin_ctz/ll
- */
