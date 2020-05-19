@@ -16,13 +16,7 @@ else
 
     echo """# [${file_title^}]($task_url)
 
-#### OI Stage I
-
-#### Memory limit 32 MB
-
 ---
-
-#### Score 100/100
 
 ### Complexity
 
