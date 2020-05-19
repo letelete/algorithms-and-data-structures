@@ -10,4 +10,7 @@ error_message="""\n
 
 [ -z "$1" ] && echo -e $error_message && exit
 
-echo -e "\n$BOLD$HINT g++ $1.cpp -std=c++11 -O2 -Wall -o sol; ./sol < in\n"
+COMPILE_AND_RUN_WITH_INPUT_CMD="g++ $1.cpp -std=c++17 -Wshadow -Wall -o $1 ; ./$1 < in"
+echo "$COMPILE_AND_RUN_WITH_INPUT_CMD" | clip.exe
+echo -e "\n$HINT Run it with\n\n$COMPILE_AND_RUN_WITH_INPUT_CMD\n\n"
+echo -e "\n$BOLD$HINT Command copied to clipboard\n"
